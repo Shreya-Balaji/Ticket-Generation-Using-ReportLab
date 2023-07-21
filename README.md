@@ -8,5 +8,5 @@ Make the following changes before using the code:
 - I have used pymysql to integrate mysql with python. Update your credentials, if you're using pymysql as well.
 - I have also used two images- oneway and round. Save it in your local PC and update the location.
 - The ticket is generated on passing reservation_id. So pass the parameter appropriately.
-- If you have doubts regarding the table and data used, check tabledata.txt
+- If you have doubts regarding the table and data used, check info.txt
 - Sample ticket generated pdf is also uploaded.
