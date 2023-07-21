@@ -7,6 +7,6 @@ Make the following changes before using the code:
 - Install modules listed in main.py file.
 - I have used pymysql to integrate mysql with python. Update your credentials, if you're using pymysql as well.
 - I have also used two images- barcode and round. Save it in your local PC and update the location.
-- The ticket is generated on passing passenger_id. So pass the parameter appropriately.
+- The ticket is generated on passing reservation_id. So pass the parameter appropriately.
 - If you have doubts regarding the table and data used, check tabledata.txt
 - Sample ticket generated pdf is also uploaded.
