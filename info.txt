@@ -1,0 +1,144 @@
+mysql> use project1;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_project1 |
++--------------------+
+| airports           |
+| flight             |
+| flightdata         |
+| login              |
+| passenger          |
+| reservation        |
+| temp               |
++--------------------+
+7 rows in set (0.33 sec)
+
+mysql> select* from airports;
++------+---------+
+| code | name    |
++------+---------+
+| MAA  | Chennai |
+| BOM  | Mumbai  |
++------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select* from flight;
++-----------+------------+------+
+| flight_no | date       | cost |
++-----------+------------+------+
+| ZE-068    | 2023-08-01 | 4200 |
+| ZE-069    | 2023-08-15 | 3000 |
++-----------+------------+------+
+2 rows in set (0.04 sec)
+
+mysql> select* from flightdata;
++-----------+-----------+----------------+-------------+--------------+----------+
+| flight_no | departure | departure_time | destination | arrival_time | duration |
++-----------+-----------+----------------+-------------+--------------+----------+
+| ZE-068    | Chennai   | 02:15:00       | Mumbai      | 04:30:00     | 02:15:00 |
+| ZE-069    | Mumbai    | 19:00:00       | Chennai     | 21:15:00     | 02:15:00 |
++-----------+-----------+----------------+-------------+--------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select* from login;
++------------------+----------+-----------------+
+| username         | password | security_answer |
++------------------+----------+-----------------+
+| shreya@gmail.com | 123      | nos             |
++------------------+----------+-----------------+
+1 row in set (0.29 sec)
+
+mysql> select* from passenger;
++--------------+------------+-----------+------+-------------------+----------------+--------+
+| passenger_id | first_name | last_name | age  | email             | phone          | gender |
++--------------+------------+-----------+------+-------------------+----------------+--------+
+|            1 | Shreya     | Balaji    |   19 | shreya@gmail.com  | +91 9789027537 | female |
+|            2 | Virat      | Kohli     |   34 | shreya@gmail.com  | +91 9789027537 | male   |
+|            3 | KL         | Rahul     |   30 | klrahul@gmail.com | +91 9952059261 | male   |
++--------------+------------+-----------+------+-------------------+----------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select* from reservation;
++--------------+--------------+---------------------+------------------+-----------------------+--------------------+-----------------------+--------------------+------------+----------------+
+| passenger_id | pnr_outbound | flight_no_departure | flight_no_return | seat_number_departure | seat_number_return | travel_date_departure | travel_date_return | pnr_return | reservation_id |
++--------------+--------------+---------------------+------------------+-----------------------+--------------------+-----------------------+--------------------+------------+----------------+
+|            1 | ZEPNR-01     | ZE-068              | ZE-069           | 68-09                 | 69-21              | 2023-08-01            | 2023-08-15         | ZEPNR-02   |              1 |
+|            2 | ZEPNR-01     | ZE-068              | ZE-069           | 68-10                 | 69-22              | 2023-08-01            | 2023-08-15         | ZEPNR-02   |              1 |
+|            3 | ZEPNR-03     | ZE-069              | NULL             | 69-23                 | NULL               | 2023-08-15            | NULL
+     | NULL       |              2 |
++--------------+--------------+---------------------+------------------+-----------------------+--------------------+-----------------------+--------------------+------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> desc airports;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| code  | varchar(10) | YES  |     | NULL    |       |
+| name  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.12 sec)
+
+mysql> desc flight;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| flight_no | varchar(255) | NO   | PRI | NULL    |       |
+| date      | date         | NO   | PRI | NULL    |       |
+| cost      | int          | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+
+mysql> desc flightdata;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| flight_no      | varchar(255) | NO   | PRI | NULL    |       |
+| departure      | varchar(45)  | NO   |     | NULL    |       |
+| departure_time | time         | NO   |     | NULL    |       |
+| destination    | varchar(255) | NO   |     | NULL    |       |
+| arrival_time   | time         | NO   |     | NULL    |       |
+| duration       | time         | NO   |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+6 rows in set (0.06 sec)
+
+mysql> desc login;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| username        | varchar(255) | NO   | PRI | NULL    |       |
+| password        | varchar(255) | NO   |     | NULL    |       |
+| security_answer | varchar(255) | NO   |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc passenger;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| passenger_id | int          | NO   | PRI | NULL    | auto_increment |
+| first_name   | varchar(255) | YES  |     | NULL    |                |
+| last_name    | varchar(255) | YES  |     | NULL    |                |
+| age          | int          | YES  |     | NULL    |                |
+| email        | varchar(255) | YES  |     | NULL    |                |
+| phone        | varchar(20)  | YES  |     | NULL    |                |
+| gender       | varchar(45)  | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.30 sec)
+
+mysql> desc reservation;
++-----------------------+-------------+------+-----+---------+-------+
+| Field                 | Type        | Null | Key | Default | Extra |
++-----------------------+-------------+------+-----+---------+-------+
+| passenger_id          | int         | NO   | MUL | NULL    |       |
+| pnr_outbound          | varchar(20) | YES  |     | NULL    |       |
+| flight_no_departure   | varchar(20) | YES  | MUL | NULL    |       |
+| flight_no_return      | varchar(20) | YES  | MUL | NULL    |       |
+| seat_number_departure | varchar(10) | YES  |     | NULL    |       |
+| seat_number_return    | varchar(10) | YES  |     | NULL    |       |
+| travel_date_departure | date        | YES  |     | NULL    |       |
+| travel_date_return    | date        | YES  |     | NULL    |       |
+| pnr_return            | varchar(20) | YES  |     | NULL    |       |
+| reservation_id        | int         | YES  |     | NULL    |       |
++-----------------------+-------------+------+-----+---------+-------+
+10 rows in set (0.49 sec)
